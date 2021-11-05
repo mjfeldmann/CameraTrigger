@@ -1,0 +1,56 @@
+
+//For Arduino Uno REV3 
+//Run a stepper motor with motor shield
+//Editted Mitchell Feldmann
+//Once sketch is uploaded to Arduino, only requirement is power to be turned on and off
+
+//*********************************************************************************
+double delaylength = 45;
+
+void setup() {
+  // put your setup code here, to run once:
+  
+  
+  //establish motor direction toggle pins
+  pinMode(12, HIGH); //CH A -- HIGH = forwards and LOW = backwards???
+  pinMode(13, HIGH); //CH B -- HIGH = forwards and LOW = backwards???
+  
+  //establish motor brake pins
+  pinMode(9, LOW); //brake (disable) CH A
+  pinMode(8, LOW); //brake (disable) CH B
+}
+
+void loop(){
+  // put your main code here, to run repeatedly:
+    digitalWrite(9, LOW);  //ENABLE CH A
+    digitalWrite(8, HIGH); //DISABLE CH B
+
+    digitalWrite(12, HIGH);   //Sets direction of CH A
+    analogWrite(3, 255);   //Moves CH A
+  
+    delay(delaylength);
+  
+    digitalWrite(9, HIGH);  //DISABLE CH A
+    digitalWrite(8, LOW); //ENABLE CH B
+
+    digitalWrite(13, LOW);   //Sets direction of CH B
+    analogWrite(11, 255);   //Moves CH B
+  
+    delay(delaylength);
+  
+    digitalWrite(9, LOW);  //ENABLE CH A
+    digitalWrite(8, HIGH); //DISABLE CH B
+
+    digitalWrite(12, LOW);   //Sets direction of CH A
+    analogWrite(3, 255);   //Moves CH A
+  
+    delay(delaylength);
+    
+    digitalWrite(9, HIGH);  //DISABLE CH A
+    digitalWrite(8, LOW); //ENABLE CH B
+
+    digitalWrite(13, HIGH);   //Sets direction of CH B
+    analogWrite(11, 255);   //Moves CH B
+  
+    delay(delaylength);
+} 

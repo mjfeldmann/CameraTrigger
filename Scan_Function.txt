@@ -1,0 +1,14 @@
+
+######################################################################
+# scan function; needs to be in .bash_profile
+# barcode scanner needs to have "scan " as a prefix
+######################################################################
+
+touch ID_file.txt
+function scan(){
+	echo "Scanned Value: " $1;
+	echo $1 >> ID_file.txt;
+	wc -l ID_file.txt;
+
+	python serial_trigger.py
+}

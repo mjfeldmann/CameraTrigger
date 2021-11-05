@@ -1,0 +1,19 @@
+
+######################################################################
+# serial_trigger.py
+# connects to serial port for Arduino, pauses, counts, starts arduino
+######################################################################
+
+import serial
+import time
+s=serial.Serial('/dev/ttyACM0',9600)	
+time.sleep(1)				
+print("3")				
+time.sleep(1)
+print("2")
+time.sleep(1)
+print("1")
+time.sleep(1)
+print("Start")				
+time.sleep(1)
+s.write(1)	
